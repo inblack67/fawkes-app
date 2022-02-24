@@ -1,5 +1,5 @@
 class Endpoints {
-  static const String base = 'localhost:4000/api';
-  static const String httpPrefix = 'http';
-  static const String rooms = '$httpPrefix://$base/rooms';
+  static const base = 'localhost:4000/api';
+  static const httpProtocol = 'http';
+  static const rooms = '$httpProtocol://$base/rooms';
 }

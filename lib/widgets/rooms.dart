@@ -1,37 +1,35 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:fawkes/models/room.dart';
+import 'package:fawkes/model/room.dart';
 import 'package:fawkes/utils/endpoints.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class WRooms extends StatefulWidget {
-  static const id = 'ROOMS';
   const WRooms({Key? key}) : super(key: key);
+  static const id = 'ROOMS';
 
   @override
   _WRoomsState createState() => _WRoomsState();
 }
 
 class _WRoomsState extends State<WRooms> {
-  List<Room> _rooms = [];
+  List<MRoom> _rooms = [];
 
   @override
   void initState() {
+    super.initState();
     getRooms();
   }
 
   Future<void> getRooms() async {
     try {
       var res = await http.get(Uri.parse(Endpoints.rooms));
-      var resData = jsonDecode(res.body);
-      print(resData);
-      if (resData['success']) {
+      var jsonBody = jsonDecode(res.body);
+      if (jsonBody['success']) {
         var rooms =
-            (resData['data'] as List).map((el) => Room.fromJSON(el)).toList();
-        print('rooms**');
-        print(rooms);
+            (jsonBody['data'] as List).map((el) => MRoom.fromJSON(el)).toList();
         setState(() {
           _rooms = rooms;
         });
@@ -62,7 +60,7 @@ class _WRoomsState extends State<WRooms> {
               ),
             ),
             onTap: () {
-              print('${room.name} room tapped');
+              print('${room.name} tapped');
             },
           );
         },
