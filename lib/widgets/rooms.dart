@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:fawkes/model/room.dart';
 import 'package:fawkes/utils/endpoints.dart';
+import 'package:fawkes/widgets/room.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -16,6 +17,7 @@ class WRooms extends StatefulWidget {
 
 class _WRoomsState extends State<WRooms> {
   List<MRoom> _rooms = [];
+  int? _roomId;
 
   @override
   void initState() {
@@ -42,29 +44,33 @@ class _WRoomsState extends State<WRooms> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        title: const Text('Fawkes | Rooms'),
-        backgroundColor: Colors.red,
-      ),
-      body: ListView.builder(
-        itemCount: _rooms.length,
-        itemBuilder: (context, index) {
-          var room = _rooms[index];
-          return ListTile(
-            title: Text(
-              room.name,
-              style: const TextStyle(
-                color: Colors.white,
-              ),
+    return _roomId != null
+        ? WRoom(roomId: _roomId!)
+        : Scaffold(
+            backgroundColor: Colors.black,
+            appBar: AppBar(
+              title: const Text('Fawkes | Rooms'),
+              backgroundColor: Colors.red,
             ),
-            onTap: () {
-              print('${room.name} tapped');
-            },
+            body: ListView.builder(
+              itemCount: _rooms.length,
+              itemBuilder: (context, index) {
+                var room = _rooms[index];
+                return ListTile(
+                  title: Text(
+                    room.name,
+                    style: const TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  onTap: () {
+                    setState(() {
+                      _roomId = room.id;
+                    });
+                  },
+                );
+              },
+            ),
           );
-        },
-      ),
-    );
   }
 }
