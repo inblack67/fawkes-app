@@ -16,7 +16,7 @@ class WMessage extends StatelessWidget {
           child: Material(
             elevation: 16.0,
             borderRadius: BorderRadius.circular(10.0),
-            color: Colors.red,
+            color: Colors.blueGrey[900],
             child: Padding(
               padding: const EdgeInsets.all(12.0),
               child: Text(

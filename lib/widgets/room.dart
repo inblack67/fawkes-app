@@ -43,10 +43,10 @@ class _WRoomState extends State<WRoom> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.blueGrey[800],
       appBar: AppBar(
         title: const Text('Fawkes | Chat'),
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.blueGrey[900],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

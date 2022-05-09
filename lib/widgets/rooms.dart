@@ -47,10 +47,10 @@ class _WRoomsState extends State<WRooms> {
     return _roomId != null
         ? WRoom(roomId: _roomId!)
         : Scaffold(
-            backgroundColor: Colors.black,
+            backgroundColor: Colors.blueGrey[800],
             appBar: AppBar(
               title: const Text('Fawkes | Rooms'),
-              backgroundColor: Colors.red,
+              backgroundColor: Colors.blueGrey[900],
             ),
             body: ListView.builder(
               itemCount: _rooms.length,
