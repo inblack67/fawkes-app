@@ -11,18 +11,21 @@ class WMessage extends StatelessWidget {
       // crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Material(
-            elevation: 16.0,
-            borderRadius: BorderRadius.circular(10.0),
-            color: Colors.blueGrey[900],
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Text(
-                message.content,
-                style: const TextStyle(
-                  color: Colors.white,
+        SizedBox(
+          // width: MediaQuery.of(context).size.width * 0.5,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Material(
+              elevation: 16.0,
+              borderRadius: BorderRadius.circular(10.0),
+              color: Colors.blueGrey[900],
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Text(
+                  message.content,
+                  style: const TextStyle(
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
